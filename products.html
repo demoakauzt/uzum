@@ -12,10 +12,15 @@
 </head>
 <body>
     <header class="header">
-        <a href="index.html" class="logo" style="text-decoration: none; color: inherit; cursor: pointer;">
-            <div class="logo-icon">✦</div>
-            <span>Uzum Market</span>
-        </a>
+        <div style="display: flex; flex-direction: column; align-items: flex-start;">
+            <a href="index.html" class="logo" style="text-decoration: none; color: inherit; cursor: pointer; margin-bottom: 5px;">
+                <div class="logo-icon">✦</div>
+                <span>Uzum Market</span>
+            </a>
+            <a href="index.html" style="text-decoration: none; font-size: 0.75rem; color: #004532; font-weight: 600; display: flex; align-items: center; gap: 4px; padding: 2px 8px; background: #e1efe6; border-radius: 4px;">
+                <i class="fas fa-arrow-left"></i> Chiqish
+            </a>
+        </div>
         <nav class="nav">
             <div class="dropdown mega-dropdown">
                 <a href="#" class="nav-link">Xizmatlar <i class="fas fa-chevron-down text-xs"></i></a>
@@ -331,25 +336,24 @@
     let allProducts = [];
 
     async function loadProducts() {
-        const grid = document.getElementById('productsGrid');
         try {
             const res = await fetch('/api/products');
-            allProducts = await res.json();
-            
-            renderProducts('Barchasi');
-            
-            // Set up filter buttons
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    renderProducts(this.textContent.trim());
-                });
-            });
-            
+            if (res.ok) allProducts = await res.json();
         } catch (err) {
-            console.error('Mahsulotlarni yuklashda xatolik:', err);
+            console.log('Using offline data');
+        } finally {
+            const local = JSON.parse(localStorage.getItem('local_products') || '[]');
+            allProducts = [...local, ...allProducts];
+            renderProducts('Barchasi');
         }
+        
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderProducts(this.textContent.trim());
+            });
+        });
     }
 
     function renderProducts(category) {
@@ -396,7 +400,7 @@
         const cartCount = document.getElementById('cartCount');
 
         document.querySelectorAll('.add-to-cart').forEach(btn => {
-            btn.onclick = function(e) { // Using onclick for easy replacement
+            btn.onclick = function(e) {
                 const card = this.closest('.product-card');
                 const product = {
                     name: card.querySelector('.p-name').textContent,
