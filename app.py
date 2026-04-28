@@ -8,9 +8,17 @@ app = Flask(__name__, static_folder='.', static_url_path='')
 GOOGLE_CLIENT_ID = "937984856077-9uk43pn7ljstlpstp0261j95mnfmq6qi.apps.googleusercontent.com"
 GOOGLE_CLIENT_SECRET = "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"
 
+# Paths
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+DATABASE = os.path.join(BASE_DIR, 'database.db')
+UPLOAD_FOLDER = os.path.join(BASE_DIR, 'static', 'uploads')
+
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
 # Initialize database
 def init_db():
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect(DATABASE)
     cursor = conn.cursor()
     # Contact form submissions
     cursor.execute('''
@@ -135,16 +143,23 @@ def get_products():
 
 @app.route('/api/products', methods=['POST'])
 def add_product():
-    data = request.get_json()
-    conn = sqlite3.connect('database.db')
-    cursor = conn.cursor()
-    cursor.execute('''
-        INSERT INTO products (name, category, price, old_price, image_url, badge)
-        VALUES (?, ?, ?, ?, ?, ?)
-    ''', (data['name'], data['category'], data['price'], data.get('old_price', ''), data['image_url'], data.get('badge', '')))
-    conn.commit()
-    conn.close()
-    return jsonify({'success': True})
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({'error': 'Ma\'lumot yuborilmadi'}), 400
+            
+        conn = sqlite3.connect(DATABASE)
+        cursor = conn.cursor()
+        cursor.execute('''
+            INSERT INTO products (name, category, price, old_price, image_url, badge)
+            VALUES (?, ?, ?, ?, ?, ?)
+        ''', (data['name'], data['category'], data['price'], data.get('old_price', ''), data['image_url'], data.get('badge', '')))
+        conn.commit()
+        conn.close()
+        return jsonify({'success': True})
+    except Exception as e:
+        print(f"Product add error: {e}")
+        return jsonify({'error': str(e)}), 500
 
 from werkzeug.utils import secure_filename
 
