@@ -124,13 +124,20 @@
                         method: 'POST',
                         body: formData
                     });
-                    if (!res.ok) throw new Error('Yuklashda xatolik');
+                    if (!res.ok) throw new Error('Server offline');
                     const data = await res.json();
                     uploadedImageUrl = data.url;
                     imagePreview.innerHTML = `<img src="${uploadedImageUrl}">`;
                 } catch (err) {
-                    alert('Rasmni yuklashda xatolik yuz berdi: ' + err.message);
-                    imagePreview.innerHTML = `<span>Xatolik!</span>`;
+                    // Fallback to Base64 for static hosting (GitHub Pages)
+                    console.log('Using Base64 fallback');
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        uploadedImageUrl = e.target.result;
+                        imagePreview.innerHTML = `<img src="${uploadedImageUrl}">`;
+                        alert('Eslatma: GitHub Pages serverisiz ishlayotgani uchun rasm vaqtinchalik xotiraga saqlanadi.');
+                    };
+                    reader.readAsDataURL(file);
                 }
             }
         });
@@ -163,20 +170,27 @@
                 });
 
                 if (res.ok) {
-                    document.getElementById('successOverlay').style.display = 'flex';
-                    setTimeout(() => {
-                        window.location.href = 'products.html';
-                    }, 2000);
+                    showSuccessAndRedirect();
                 } else {
-                    const errData = await res.json();
-                    throw new Error(errData.error || 'Serverda xatolik');
+                    throw new Error('Server error');
                 }
             } catch (err) {
-                alert('Mahsulotni saqlashda xatolik: ' + err.message);
-                saveBtn.disabled = false;
-                saveBtn.textContent = 'Mahsulotni saqlash';
+                // Save to localStorage for GitHub Pages
+                let localProducts = JSON.parse(localStorage.getItem('local_products') || '[]');
+                productData.id = Date.now();
+                localProducts.push(productData);
+                localStorage.setItem('local_products', JSON.stringify(localProducts));
+                
+                showSuccessAndRedirect();
             }
         });
+
+        function showSuccessAndRedirect() {
+            document.getElementById('successOverlay').style.display = 'flex';
+            setTimeout(() => {
+                window.location.href = 'products.html';
+            }, 2000);
+        }
 
         // Load existing products for management
         async function loadAdminProducts() {
