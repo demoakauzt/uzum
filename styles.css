@@ -829,6 +829,92 @@ body {
     color: #1a1a1a;
 }
 
+/* =============================================
+   RESPONSIVE DESIGN (Media Queries)
+   ============================================= */
+
+@media (max-width: 1024px) {
+    .content-wrapper {
+        flex-direction: column;
+        padding: 4rem 2rem;
+        gap: 3rem;
+    }
+
+    .left-content h1 {
+        font-size: 4rem;
+    }
+
+    .right-content {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 0 1.5rem;
+    }
+
+    .nav {
+        display: none; /* Hide desktop nav */
+    }
+
+    .left-content h1 {
+        font-size: 3rem;
+        line-height: 1.1;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .cta-buttons .btn {
+        width: 100%;
+    }
+
+    .stats-row {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .stat h3 {
+        font-size: 2rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        padding: 0 1rem;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .footer-right {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .left-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .logos-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-right {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* ===== REGISTER MODAL ===== */
 .modal-overlay {
     position: fixed;
