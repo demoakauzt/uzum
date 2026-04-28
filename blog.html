@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Menga Uzum Market</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">✦</div>
+            <span>Uzum Market</span>
+        </div>
+        <nav class="nav">
+            <div class="dropdown mega-dropdown">
+                <a href="#" class="nav-link">Xizmatlar <i class="fas fa-chevron-down text-xs"></i></a>
+                <div class="dropdown-menu mega-menu">
+                    <div class="mega-menu-content">
+                        <div class="mega-menu-columns">
+                            <div class="mega-col">
+                                <h4>ASOSIY BO'LIMLAR</h4>
+                                <a href="#" class="mega-item">
+                                    <i class="far fa-file-alt"></i>
+                                    <div>
+                                        <strong>Bosh sahifa</strong>
+                                        <span>Biz haqimizda qisqacha ma'lumot</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-item">
+                                    <i class="far fa-file-alt"></i>
+                                    <div>
+                                        <strong>Mahsulotlar</strong>
+                                        <span>Yangi mahsulotlarni ko'ring</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-item">
+                                    <i class="far fa-file-alt"></i>
+                                    <div>
+                                        <strong>Aloqa</strong>
+                                        <span>Savollar va yordam</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="mega-col">
+                                <h4>QO'SHIMCHA BO'LIMLAR</h4>
+                                <a href="#" class="mega-item">
+                                    <i class="far fa-file-alt"></i>
+                                    <div>
+                                        <strong>Hamkorlik</strong>
+                                        <span>Biznes uchun imkoniyatlar</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-item">
+                                    <i class="far fa-file-alt"></i>
+                                    <div>
+                                        <strong>Yangiliklar</strong>
+                                        <span>So'nggi yangiliklar bilan tanishing</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-item">
+                                    <i class="far fa-file-alt"></i>
+                                    <div>
+                                        <strong>Foydalanuvchilar</strong>
+                                        <span>Profil va sozlamalar</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="mega-col">
+                                <h4>TEZKOR HAVOLALAR</h4>
+                                <a href="#" class="mega-item">
+                                    <i class="far fa-file-alt"></i>
+                                    <div>
+                                        <strong>To'lovlar</strong>
+                                        <span>Xavfsiz to'lov usullari</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-item">
+                                    <i class="far fa-file-alt"></i>
+                                    <div>
+                                        <strong>Yetkazib berish</strong>
+                                        <span>Tez va ishonchli yetkazib berish</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-item">
+                                    <i class="far fa-file-alt"></i>
+                                    <div>
+                                        <strong>Qo'llab-quvvatlash</strong>
+                                        <span>24/7 yordam xizmati</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="mega-card-right">
+                            <div class="dark-card">
+                                <h2>Biznesingiz uchun<br>qulay imkoniyatlar</h2>
+                                <p>Kengaytirilgan xizmatlar va tezkor yordam</p>
+                                <a href="#" class="btn-link">Batafsil &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="about.html" class="nav-link">Biz haqimizda</a>
+            <a href="blog.html" class="nav-link active">Blog</a>
+            <div class="dropdown simple-dropdown">
+                <a href="#" class="nav-link">Yordam <i class="fas fa-chevron-down text-xs"></i></a>
+                <div class="dropdown-menu simple-menu">
+                    <a href="#">Savollar va javoblar</a>
+                    <a href="#">Aloqa</a>
+                </div>
+            </div>
+        </nav>
+        <div class="header-actions" id="headerActions">
+            <!-- Filled dynamically by script.js -->
+            <div class="cart-icon" id="cartIcon" style="margin-right: 15px; position: relative; cursor: pointer; display: flex; align-items: center;">
+            <i class="fas fa-shopping-cart" style="font-size: 1.4rem; color: #004532;"></i>
+            <span id="cartCount" style="position: absolute; top: -5px; right: -5px; background: #ff4757; color: white; border-radius: 50%; width: 10px; height: 10px; border: 2px solid white; display: none;"></span>
+        </div>
+        <a href="register.html" class="btn btn-primary" id="openRegisterBtn" style="text-decoration:none;">Ro'yxatdan o'tish</a>
+        </div>
+    </header>
+
+    <style>
+        .blog-hero {
+            text-align: center;
+            padding: 80px 20px 40px;
+            background: white;
+        }
+        .icon-sparkle {
+            color: #0d4a36;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .blog-title {
+            font-size: 4rem;
+            color: #0b2c24;
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        .blog-subtitle {
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .blog-section {
+            background-color: #f4f9fc;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .blog-section-label {
+            color: #666;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        .blog-section-title {
+            color: #0b2c24;
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+        .blog-section-subtitle {
+            color: #555;
+            margin-bottom: 30px;
+        }
+        
+        .blog-btn-primary {
+            background-color: #004532;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 60px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .blog-grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        
+        .b-card {
+            background: transparent;
+        }
+        
+        .b-card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .b-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .b-tag {
+            background: #e1efe6;
+            color: #555;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .b-time {
+            color: #777;
+            font-size: 0.8rem;
+        }
+        
+        .b-title {
+            color: #0b2c24;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .b-desc {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        
+        .b-link {
+            color: #0b2c24;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        .b-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .blog-grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .blog-title {
+                font-size: 3rem;
+            }
+            .blog-section-title {
+                font-size: 2.5rem;
+            }
+        }
+        @media (max-width: 576px) {
+            .blog-grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <main style="padding-top: 80px;">
+        <!-- Hero -->
+        <section class="blog-hero">
+            <div class="icon-sparkle"><i class="fas fa-sparkles"></i></div>
+            <h1 class="blog-title">Biznesingiz<br>uchun qulay<br>yechimlar</h1>
+            <p class="blog-subtitle">Ishlaringizni tez va oson bajaring. Hamkorlik qilish, buyurtma berish va boshqarish endi yanada soddaroq.</p>
+            <div style="margin-top: 40px; max-width: 900px; margin-left: auto; margin-right: auto; padding: 0 20px;">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200&h=500" alt="Biznes yechimlar" style="width: 100%; border-radius: 16px; object-fit: cover; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+            </div>
+        </section>
+
+        <!-- Articles Section -->
+        <section class="blog-section">
+            <div class="blog-section-label">YANGI MAHSULOTLAR VA YANGILIKLAR</div>
+            <h2 class="blog-section-title">Hammasi bir<br>joyda, tez toping</h2>
+            <p class="blog-section-subtitle">Eng so'nggi yangiliklar va foydali tavsiyalar shu yerda</p>
+            
+            <a href="products.html" class="blog-btn-primary">Ko'rish</a>
+            
+            <div class="blog-grid-container">
+                <!-- Card 1 -->
+                <div class="b-card">
+                    <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&q=80&w=400&h=250" alt="Do'kon yangiliklari" class="b-card-img">
+                    <div class="b-card-meta">
+                        <span class="b-tag">SOTUV</span>
+                        <span class="b-time">5 daqiqa o'qiladi</span>
+                    </div>
+                    <h3 class="b-title">Do'kon yangiliklari</h3>
+                    <p class="b-desc">Yangi kelgan mahsulotlar va chegirmalar haqida bilib oling.</p>
+                    <a href="#" class="b-link">Batafsil &rarr;</a>
+                </div>
+                
+                <!-- Card 2 removed -->
+
+                <!-- Card 3 -->
+                <div class="b-card">
+                    <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&q=80&w=400&h=250" alt="Savollarga javoblar" class="b-card-img">
+                    <div class="b-card-meta">
+                        <span class="b-tag">YORDAM</span>
+                        <span class="b-time">5 daqiqa o'qiladi</span>
+                    </div>
+                    <h3 class="b-title">Savollarga javoblar</h3>
+                    <p class="b-desc">Ko'p so'raladigan savollar va yordam.</p>
+                    <a href="#" class="b-link">Batafsil &rarr;</a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="b-card">
+                    <img src="https://images.unsplash.com/photo-1534723452862-4c874018d66d?auto=format&fit=crop&q=80&w=400&h=250" alt="Foydalanuvchi tajribasi" class="b-card-img">
+                    <div class="b-card-meta">
+                        <span class="b-tag">TADQIQOT</span>
+                        <span class="b-time">5 daqiqa o'qiladi</span>
+                    </div>
+                    <h3 class="b-title">Foydalanuvchi tajribasi</h3>
+                    <p class="b-desc">Xaridorlar fikri va tajribalari bilan tanishing.</p>
+                    <a href="#" class="b-link">Batafsil &rarr;</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-left">
+                <h2>Yangi imkoniyatlar sizni kutmoqda<br><a href="mailto:aloqa@uzummarket.uz">aloqa@uzummarket.uz</a></h2>
+                <p>Biz bilan bog'laning yoki savol bering.</p>
+                <button class="btn btn-primary mt-1">Yuklab olish</button>
+            </div>
+            <div class="footer-right">
+                <div class="footer-col">
+                    <h4>Havolalar</h4>
+                    <a href="#">Asosiy</a>
+                    <a href="#">Xizmatlar</a>
+                    <a href="#">Aloqa</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Ma'lumot</h4>
+                    <a href="#">Haqida</a>
+                    <a href="#">Jamoa</a>
+                    <a href="#">Blog</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Qo'llab-quvvatlash</h4>
+                    <a href="#">Yordam</a>
+                    <a href="#">Savollar</a>
+                    <a href="#">Fikrlar</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Boshqa</h4>
+                    <a href="#">Maxfiylik</a>
+                    <a href="#">Shartlar</a>
+                    <a href="#">Hamkorlik</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-logo">
+                <div class="logo-icon">✦</div>
+                <span>UZUM MARKET</span>
+            </div>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="#">Narxlar</a>
+                <a href="#">Demo</a>
+                <a href="#">Qo'llab-quvvatlash</a>
+            </div>
+        </div>
+        <button id="scrollToTopBtn" class="scroll-top-btn">Yuqoriga qaytish &uarr;</button>
+    </footer>
+
+    <!-- Register Modal -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal-box">
+            <button class="modal-close" id="closeRegisterBtn">&times;</button>
+            <div class="modal-inner">
+                <div class="modal-left">
+                    <h2>Biz bilan<br>bog'laning</h2>
+                    <p>Savolingiz bormi? <span class="highlight-blue">Formani</span> to'<span class="highlight-blue">ldiring</span>, tez javob <span class="highlight-green">beramiz</span>.</p>
+                </div>
+                <div class="modal-right">
+                    <form id="registerForm" autocomplete="off">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>ISMINGIZ</label>
+                                <input type="text" placeholder="First name" id="firstName">
+                            </div>
+                            <div class="form-group">
+                                <label>SHARIFINGIZ</label>
+                                <input type="text" placeholder="First name" id="lastName">
+                            </div>
+                        </div>
+                        <div class="form-group full">
+                            <label>FAMILIYANGIZ</label>
+                            <input type="text" placeholder="Last name" id="familyName">
+                        </div>
+                        <div class="form-group full">
+                            <label>EMAIL MANZILINGIZ</label>
+                            <input type="email" placeholder="email@website.com" id="emailAddr">
+                        </div>
+                        <div class="form-group full">
+                            <label>XABARINGIZ</label>
+                            <textarea placeholder="Type your message..." id="message" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

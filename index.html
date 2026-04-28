@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menga Uzum Market</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">✦</div>
+            <span>Uzum Market</span>
+        </div>
+        <nav class="nav">
+            <div class="dropdown mega-dropdown">
+                <a href="#" class="nav-link">Xizmatlar <i class="fas fa-chevron-down text-xs"></i></a>
+                <div class="dropdown-menu mega-menu">
+                    <div class="mega-menu-content">
+                        <div class="mega-menu-columns">
+                            <div class="mega-col">
+                                <h4>ASOSIY BO'LIMLAR</h4>
+                                <a href="#" class="mega-item">
+                                    <i class="far fa-file-alt"></i>
+                                    <div>
+                                        <strong>Bosh sahifa</strong>
+                                        <span>Biz haqimizda qisqacha ma'lumot</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-item">
+                                    <i class="far fa-file-alt"></i>
+                                    <div>
+                                        <strong>Mahsulotlar</strong>
+                                        <span>Yangi mahsulotlarni ko'ring</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-item">
+                                    <i class="far fa-file-alt"></i>
+                                    <div>
+                                        <strong>Aloqa</strong>
+                                        <span>Savollar va yordam</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="mega-col">
+                                <h4>QO'SHIMCHA BO'LIMLAR</h4>
+                                <a href="#" class="mega-item">
+                                    <i class="far fa-file-alt"></i>
+                                    <div>
+                                        <strong>Hamkorlik</strong>
+                                        <span>Biznes uchun imkoniyatlar</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-item">
+                                    <i class="far fa-file-alt"></i>
+                                    <div>
+                                        <strong>Yangiliklar</strong>
+                                        <span>So'nggi yangiliklar bilan tanishing</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-item">
+                                    <i class="far fa-file-alt"></i>
+                                    <div>
+                                        <strong>Foydalanuvchilar</strong>
+                                        <span>Profil va sozlamalar</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="mega-col">
+                                <h4>TEZKOR HAVOLALAR</h4>
+                                <a href="#" class="mega-item">
+                                    <i class="far fa-file-alt"></i>
+                                    <div>
+                                        <strong>To'lovlar</strong>
+                                        <span>Xavfsiz to'lov usullari</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-item">
+                                    <i class="far fa-file-alt"></i>
+                                    <div>
+                                        <strong>Yetkazib berish</strong>
+                                        <span>Tez va ishonchli yetkazib berish</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="mega-item">
+                                    <i class="far fa-file-alt"></i>
+                                    <div>
+                                        <strong>Qo'llab-quvvatlash</strong>
+                                        <span>24/7 yordam xizmati</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="mega-card-right">
+                            <div class="dark-card">
+                                <h2>Biznesingiz uchun<br>qulay imkoniyatlar</h2>
+                                <p>Kengaytirilgan xizmatlar va tezkor yordam</p>
+                                <a href="#" class="btn-link">Batafsil &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="about.html" class="nav-link">Biz haqimizda</a>
+            <a href="blog.html" class="nav-link">Blog</a>
+            <div class="dropdown simple-dropdown">
+                <a href="#" class="nav-link">Yordam <i class="fas fa-chevron-down text-xs"></i></a>
+                <div class="dropdown-menu simple-menu">
+                    <a href="#">Savollar va javoblar</a>
+                    <a href="#">Aloqa</a>
+                </div>
+            </div>
+        </nav>
+        <div class="header-actions" id="headerActions">
+            <!-- Filled dynamically by script.js -->
+            <div class="cart-icon" id="cartIcon" style="margin-right: 15px; position: relative; cursor: pointer; display: flex; align-items: center;">
+            <i class="fas fa-shopping-cart" style="font-size: 1.4rem; color: #004532;"></i>
+            <span id="cartCount" style="position: absolute; top: -5px; right: -5px; background: #ff4757; color: white; border-radius: 50%; width: 10px; height: 10px; border: 2px solid white; display: none;"></span>
+        </div>
+            <div id="g_id_signin_header" style="margin-right: 15px;"></div>
+            <a href="register.html" class="btn btn-primary" id="openRegisterBtn" style="text-decoration:none;">Ro'yxatdan o'tish</a>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="hero-section">
+            <div class="content-wrapper">
+                <div class="left-content">
+                    <h1>Harid<br>qilish<br>oson, tez<br>va qulay</h1>
+                    <p class="subtitle">Zamonaviy savdo uchun eng yaxshi tanlov</p>
+                    <div class="cta-buttons">
+                        <a href="products.html" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Mahsulotlar</a>
+                        <button class="btn btn-secondary">Batafsil</button>
+                    </div>
+                </div>
+
+                <div class="right-content">
+                    <div class="glass-card">
+                        <div class="stats-row">
+                            <div class="stat">
+                                <h3>20 000+</h3>
+                                <p>Ishonchli xizmat, tez<br>yetkazib berish.</p>
+                            </div>
+                            <div class="stat">
+                                <h3>20 000+</h3>
+                                <p>Qulay boshqaruv,<br>sodda dizayn.</p>
+                            </div>
+                            <div class="stat">
+                                <h3>20 000+</h3>
+                                <p>Yangi imkoniyatlar har<br>doim mavjud.</p>
+                            </div>
+                        </div>
+                        <div class="logos-grid">
+                            <div class="partner-logo">
+                                <i class="fas fa-circle-notch"></i> LOGO
+                            </div>
+                            <div class="partner-logo">
+                                <i class="fas fa-egg"></i> EGGS
+                            </div>
+                            <div class="partner-logo">
+                                THE <span class="bordered">PAAK</span>
+                            </div>
+                            <div class="partner-logo">
+                                <i class="fas fa-tv"></i> IDEA
+                            </div>
+                            <div class="partner-logo">
+                                <i class="far fa-dot-circle"></i> 360LAB
+                            </div>
+                            <div class="partner-logo">
+                                <i class="fas fa-wave-square"></i> ECHOES
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <p class="section-label">MIJOZLAR BAHOSI</p>
+            <h2 class="section-title">Ishonch va<br>qulaylik kafolati</h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Xizmatdan juda mamnunman, rahmat!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://ui-avatars.com/api/?name=Kamron+Qodirov&background=e0cfba&color=333" alt="Kamron Qodirov" class="avatar">
+                        <div>
+                            <strong>Kamron Qodirov</strong>
+                            <span>Menga Uzum Market foydalanuvchisi</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Tezkor va oson, hammaga tavsiya qilaman."</p>
+                    <div class="testimonial-author">
+                        <img src="https://ui-avatars.com/api/?name=Laylo+Ergasheva&background=cfdce0&color=333" alt="Laylo Ergasheva" class="avatar">
+                        <div>
+                            <strong>Laylo Ergasheva</strong>
+                            <span>Menga Uzum Market mijoz</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"To'g'ri tanlov qilganmiz."</p>
+                    <div class="testimonial-author">
+                        <img src="https://ui-avatars.com/api/?name=Azizbek+Rahimov&background=cfdbca&color=333" alt="Azizbek Rahimov" class="avatar">
+                        <div>
+                            <strong>Azizbek Rahimov</strong>
+                            <span>Menga Uzum Market xaridori</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Natijalar tezda sezildi."</p>
+                    <div class="testimonial-author">
+                        <img src="https://ui-avatars.com/api/?name=Sofiya+Karimova&background=e2c9cc&color=333" alt="Sofiya Karimova" class="avatar">
+                        <div>
+                            <strong>Sofiya Karimova</strong>
+                            <span>Menga Uzum Market foydalanuvchisi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-2">
+                <a href="products.html" class="btn btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Mahsulotlar</a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <p class="section-label">JAMOALAR UCHUN ZAMONAVIY YANGILIKLAR</p>
+            <h2 class="section-title">Hammasi bir<br>joyda toping</h2>
+            <p class="section-subtitle">Eng so'nggi mahsulotlar va xizmatlar shu yerda</p>
+            
+            <div class="category-tabs">
+                <button class="tab-btn active" data-filter="all">Barchasi</button>
+                <button class="tab-btn" data-filter="elektronika">Elektronika</button>
+                <button class="tab-btn" data-filter="uy">Uy uchun</button>
+                <button class="tab-btn" data-filter="moda">Moda</button>
+            </div>
+            
+            <div class="features-grid" id="featuresGrid">
+                <!-- ===== BARCHASI (default 4) ===== -->
+                <div class="feature-card" data-category="all">
+                    <div class="feature-content">
+                        <span class="feature-tag">DIZAYN</span>
+                        <h3>Moslashuvchan imkoniyatlar</h3>
+                        <p>Har bir ish uchun qulay yechim.</p>
+                        <div class="feature-author">
+                            <img src="https://ui-avatars.com/api/?name=Jasmina+Karimova&background=e0d4c8&color=444" alt="Jasmina" class="avatar">
+                            <div><strong>Jasmina Karimova</strong><span>12 iyun 2026</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card" data-category="all">
+                    <div class="feature-content">
+                        <span class="feature-tag">DASTURLASH</span>
+                        <h3>Aqlli tizimlar</h3>
+                        <p>Ishni osonlashtiradi.</p>
+                        <div class="feature-author">
+                            <img src="https://ui-avatars.com/api/?name=Timur+Sodiqov&background=c8d4e0&color=444" alt="Timur" class="avatar">
+                            <div><strong>Timur Sodiqov</strong><span>10 iyun 2026</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card" data-category="all">
+                    <div class="feature-content">
+                        <span class="feature-tag">MARKETING</span>
+                        <h3>O'sish uchun yaratilgan</h3>
+                        <p>Jamoalar uchun tez va samarali.</p>
+                        <div class="feature-author">
+                            <img src="https://ui-avatars.com/api/?name=Lola+Mirzayeva&background=d4e0c8&color=444" alt="Lola" class="avatar">
+                            <div><strong>Lola Mirzayeva</strong><span>8 iyun 2026</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card" data-category="all">
+                    <div class="feature-content">
+                        <span class="feature-tag">SOTUV</span>
+                        <h3>Oson moslashadigan tizimlar</h3>
+                        <p>Natijaga tez yeting.</p>
+                        <div class="feature-author">
+                            <img src="https://ui-avatars.com/api/?name=Doston+Qayumov&background=e0c8c8&color=444" alt="Doston" class="avatar">
+                            <div><strong>Doston Qayumov</strong><span>6 iyun 2026</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== ELEKTRONIKA ===== -->
+                <div class="feature-card hide" data-category="elektronika">
+                    <div class="feature-content">
+                        <span class="feature-tag">AKSESSUAR</span>
+                        <h3>Yangi kolleksiya</h3>
+                        <p>Trenddagi mahsulotlar shu yerda.</p>
+                        <div class="feature-author">
+                            <img src="https://ui-avatars.com/api/?name=Sabrina+Xudoyberdiyeva&background=d8cce0&color=444" alt="Sabrina" class="avatar">
+                            <div><strong>Sabrina Xudoyberdiyeva</strong><span>5 iyun 2026</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card hide" data-category="elektronika">
+                    <div class="feature-content">
+                        <span class="feature-tag">GO'ZALLIK</span>
+                        <h3>Eng yaxshi tanlov</h3>
+                        <p>Sifatli mahsulotlar kafolati.</p>
+                        <div class="feature-author">
+                            <img src="https://ui-avatars.com/api/?name=Javlon+Tursunov&background=c8e0d4&color=444" alt="Javlon" class="avatar">
+                            <div><strong>Javlon Tursunov</strong><span>3 iyun 2026</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card hide" data-category="elektronika">
+                    <div class="feature-content">
+                        <span class="feature-tag">SPORT</span>
+                        <h3>Faollik uchun mos</h3>
+                        <p>Harakatga tayyor mahsulotlar.</p>
+                        <div class="feature-author">
+                            <img src="https://ui-avatars.com/api/?name=Nilufar+Qodirova&background=e0d4c8&color=444" alt="Nilufar" class="avatar">
+                            <div><strong>Nilufar Qodirova</strong><span>1 iyun 2026</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card hide" data-category="elektronika">
+                    <div class="feature-content">
+                        <span class="feature-tag">BOLALAR</span>
+                        <h3>Qulay va xavfsiz</h3>
+                        <p>Bolalar uchun eng yaxshi tanlov.</p>
+                        <div class="feature-author">
+                            <img src="https://ui-avatars.com/api/?name=Sherzod+Olimov&background=c8d4e0&color=444" alt="Sherzod" class="avatar">
+                            <div><strong>Sherzod Olimov</strong><span>30 may 2026</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== UY UCHUN ===== -->
+                <div class="feature-card hide" data-category="uy">
+                    <div class="feature-content">
+                        <span class="feature-tag">OSHXONA</span>
+                        <h3>Zamonaviy jihozlar</h3>
+                        <p>Oshxonangiz uchun qulaylik.</p>
+                        <div class="feature-author">
+                            <img src="https://ui-avatars.com/api/?name=Kamola+Raxmatova&background=d4e0c8&color=444" alt="Kamola" class="avatar">
+                            <div><strong>Kamola Raxmatova</strong><span>28 may 2026</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card hide" data-category="uy">
+                    <div class="feature-content">
+                        <span class="feature-tag">AVTO</span>
+                        <h3>Haydovchilar uchun</h3>
+                        <p>Avtomobil uchun kerakli mahsulotlar.</p>
+                        <div class="feature-author">
+                            <img src="https://ui-avatars.com/api/?name=Murodjon+Ergashev&background=e0c8d8&color=444" alt="Murodjon" class="avatar">
+                            <div><strong>Murodjon Ergashev</strong><span>26 may 2026</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card hide" data-category="uy">
+                    <div class="feature-content">
+                        <span class="feature-tag">BOG'</span>
+                        <h3>Tabiatga yaqin</h3>
+                        <p>Bog' uchun foydali buyumlar.</p>
+                        <div class="feature-author">
+                            <img src="https://ui-avatars.com/api/?name=Dilnoza+Toxtayeva&background=c8e0d4&color=444" alt="Dilnoza" class="avatar">
+                            <div><strong>Dilnoza To'xtayeva</strong><span>24 may 2026</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card hide" data-category="uy">
+                    <div class="feature-content">
+                        <span class="feature-tag">OFIS</span>
+                        <h3>Ish uchun qulaylik</h3>
+                        <p>Ofis uchun zamonaviy yechimlar.</p>
+                        <div class="feature-author">
+                            <img src="https://ui-avatars.com/api/?name=Sardor+Gulomov&background=e0d4c8&color=444" alt="Sardor" class="avatar">
+                            <div><strong>Sardor G'ulomov</strong><span>22 may 2026</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== MODA ===== -->
+                <div class="feature-card hide" data-category="moda">
+                    <div class="feature-content">
+                        <span class="feature-tag">UY</span>
+                        <h3>Qulay yashash uchun</h3>
+                        <p>Uy uchun kerakli mahsulotlar.</p>
+                        <div class="feature-author">
+                            <img src="https://ui-avatars.com/api/?name=Rayhon+Abdullayeva&background=d4e0c8&color=444" alt="Rayhon" class="avatar">
+                            <div><strong>Rayhon Abdullayeva</strong><span>20 may 2026</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card hide" data-category="moda">
+                    <div class="feature-content">
+                        <span class="feature-tag">TEXNIKA</span>
+                        <h3>Innovatsion mahsulotlar</h3>
+                        <p>Yangi texnologiyalar bilan tanishing.</p>
+                        <div class="feature-author">
+                            <img src="https://ui-avatars.com/api/?name=Shavkat+Mamatov&background=c8d4e0&color=444" alt="Shavkat" class="avatar">
+                            <div><strong>Shavkat Mamatov</strong><span>18 may 2026</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card hide" data-category="moda">
+                    <div class="feature-content">
+                        <span class="feature-tag">SOVG'A</span>
+                        <h3>Bayram uchun tanlov</h3>
+                        <p>Sovg'alar har bir holat uchun.</p>
+                        <div class="feature-author">
+                            <img src="https://ui-avatars.com/api/?name=Matluba+Xolmatova&background=e0d4c8&color=444" alt="Matluba" class="avatar">
+                            <div><strong>Matluba Xolmatova</strong><span>16 may 2026</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-card hide" data-category="moda">
+                    <div class="feature-content">
+                        <span class="feature-tag">HAYVONLAR</span>
+                        <h3>Uy hayvonlari uchun</h3>
+                        <p>Sog'lom va baxtli hayvonlar uchun.</p>
+                        <div class="feature-author">
+                            <img src="https://ui-avatars.com/api/?name=Javlonbek+Rustamov&background=c8e0d4&color=444" alt="Javlonbek" class="avatar">
+                            <div><strong>Javlonbek Rustamov</strong><span>14 may 2026</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-left">
+                <h2>Yangi imkoniyatlar sizni kutmoqda<br><a href="mailto:aloqa@uzummarket.uz">aloqa@uzummarket.uz</a></h2>
+                <p>Biz bilan bog'laning yoki savol bering.</p>
+                <button class="btn btn-primary mt-1">Yuklab olish</button>
+            </div>
+            <div class="footer-right">
+                <div class="footer-col">
+                    <h4>Havolalar</h4>
+                    <a href="#">Asosiy</a>
+                    <a href="#">Xizmatlar</a>
+                    <a href="#">Aloqa</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Ma'lumot</h4>
+                    <a href="#">Haqida</a>
+                    <a href="#">Jamoa</a>
+                    <a href="#">Blog</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Qo'llab-quvvatlash</h4>
+                    <a href="#">Yordam</a>
+                    <a href="#">Savollar</a>
+                    <a href="#">Fikrlar</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Boshqa</h4>
+                    <a href="#">Maxfiylik</a>
+                    <a href="#">Shartlar</a>
+                    <a href="#">Hamkorlik</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-logo">
+                <div class="logo-icon">✦</div>
+                <span>UZUM MARKET</span>
+            </div>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="#">Narxlar</a>
+                <a href="#">Demo</a>
+                <a href="#">Qo'llab-quvvatlash</a>
+            </div>
+        </div>
+        <button id="scrollToTopBtn" class="scroll-top-btn">Yuqoriga qaytish &uarr;</button>
+    </footer>
+
+    <!-- Register Modal -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal-box">
+            <button class="modal-close" id="closeRegisterBtn">&times;</button>
+            <div class="modal-inner">
+                <div class="modal-left">
+                    <h2>Biz bilan<br>bog'laning</h2>
+                    <p>Savolingiz bormi? <span class="highlight-blue">Formani</span> to'<span class="highlight-blue">ldiring</span>, tez javob <span class="highlight-green">beramiz</span>.</p>
+                </div>
+                <div class="modal-right">
+                    <form id="registerForm" autocomplete="off">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>ISMINGIZ</label>
+                                <input type="text" placeholder="First name" id="firstName">
+                            </div>
+                            <div class="form-group">
+                                <label>SHARIFINGIZ</label>
+                                <input type="text" placeholder="First name" id="lastName">
+                            </div>
+                        </div>
+                        <div class="form-group full">
+                            <label>FAMILIYANGIZ</label>
+                            <input type="text" placeholder="Last name" id="familyName">
+                        </div>
+                        <div class="form-group full">
+                            <label>EMAIL MANZILINGIZ</label>
+                            <input type="email" placeholder="email@website.com" id="emailAddr">
+                        </div>
+                        <div class="form-group full">
+                            <label>XABARINGIZ</label>
+                            <textarea placeholder="Type your message..." id="message" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Uzum Market</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background: #f4f7f6; font-family: 'Inter', sans-serif; }
+        .admin-container { max-width: 800px; margin: 60px auto; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 2px solid #f0f0f0; padding-bottom: 20px; }
+        .admin-title { font-size: 2rem; color: #004532; margin: 0; }
+        .back-btn { text-decoration: none; color: #666; display: flex; align-items: center; gap: 8px; font-weight: 500; transition: color 0.3s; }
+        .back-btn:hover { color: #004532; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 600; color: #444; margin-bottom: 8px; font-size: 0.9rem; }
+        .form-group input, .form-group select { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 10px; font-size: 1rem; transition: border-color 0.3s; }
+        .form-group input:focus { border-color: #004532; outline: none; }
+        
+        .image-preview { width: 100%; height: 200px; border: 2px dashed #ddd; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-top: 10px; overflow: hidden; background: #fafafa; position: relative; }
+        .image-preview img { width: 100%; height: 100%; object-fit: cover; }
+        .image-preview span { color: #999; }
+        
+        .submit-btn { width: 100%; padding: 15px; background: #004532; color: white; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: transform 0.2s, background 0.3s; margin-top: 20px; }
+        .submit-btn:hover { background: #003325; transform: translateY(-2px); }
+        .submit-btn:active { transform: translateY(0); }
+        
+        .success-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); display: none; align-items: center; justify-content: center; z-index: 1000; flex-direction: column; }
+        .success-icon { font-size: 5rem; color: #4ade80; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1 class="admin-title"><i class="fas fa-plus-circle"></i> Mahsulot qo'shish</h1>
+            <a href="products.html" class="back-btn"><i class="fas fa-arrow-left"></i> Saytga qaytish</a>
+        </div>
+
+        <form id="productForm">
+            <div class="form-group">
+                <label>MAHSULOT NOMI</label>
+                <input type="text" id="name" placeholder="Masalan: Yangi qulupnay" required>
+            </div>
+
+            <div class="form-group">
+                <label>KATEGORIYA</label>
+                <select id="category">
+                    <option value="Mevalar">Mevalar</option>
+                    <option value="Sabzavotlar">Sabzavotlar</option>
+                    <option value="Pishiriqlar">Pishiriqlar</option>
+                    <option value="Sut mahsulotlari">Sut mahsulotlari</option>
+                    <option value="Ichimliklar">Ichimliklar</option>
+                </select>
+            </div>
+
+            <div style="display: flex; gap: 20px;">
+                <div class="form-group" style="flex: 1;">
+                    <label>NARXI (so'mda)</label>
+                    <input type="text" id="price" placeholder="45 000 so'm" required>
+                </div>
+                <div class="form-group" style="flex: 1;">
+                    <label>ESKI NARXI (ixtiyoriy)</label>
+                    <input type="text" id="old_price" placeholder="55 000">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>AKSIYA/YANGI BELGISI (ixtiyoriy)</label>
+                <input type="text" id="badge" placeholder="Masalan: -20% yoki Yangi">
+            </div>
+
+            <div class="form-group">
+                <label>MAHSULOT RASMI</label>
+                <input type="file" id="imageInput" accept="image/*" required>
+                <div class="image-preview" id="imagePreview">
+                    <span>Rasm tanlanmagan</span>
+                </div>
+            </div>
+
+        <button type="submit" class="submit-btn" id="saveBtn">Mahsulotni saqlash</button>
+        </form>
+
+        <div style="margin-top: 50px; border-top: 2px solid #f0f0f0; padding-top: 30px;">
+            <h2 style="color: #004532; margin-bottom: 20px;"><i class="fas fa-list"></i> Mavjud mahsulotlar</h2>
+            <div id="adminProductList" style="display: flex; flex-direction: column; gap: 15px;">
+                <!-- Product items will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="success-overlay" id="successOverlay">
+        <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+        <h2>Mahsulot muvaffaqiyatli qo'shildi!</h2>
+        <p>Sizni mahsulotlar sahifasiga yo'naltirmoqdamiz...</p>
+    </div>
+
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const imagePreview = document.getElementById('imagePreview');
+        const saveBtn = document.getElementById('saveBtn');
+        let uploadedImageUrl = '';
+
+        imageInput.addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                // Preview
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    imagePreview.innerHTML = `<img src="${e.target.result}">`;
+                };
+                reader.readAsDataURL(file);
+
+                // Upload
+                imagePreview.innerHTML = `<span>Yuklanmoqda...</span>`;
+                const formData = new FormData();
+                formData.append('file', file);
+
+                try {
+                    const res = await fetch('/api/upload', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    if (!res.ok) throw new Error('Yuklashda xatolik');
+                    const data = await res.json();
+                    uploadedImageUrl = data.url;
+                    imagePreview.innerHTML = `<img src="${uploadedImageUrl}">`;
+                } catch (err) {
+                    alert('Rasmni yuklashda xatolik yuz berdi: ' + err.message);
+                    imagePreview.innerHTML = `<span>Xatolik!</span>`;
+                }
+            }
+        });
+
+        document.getElementById('productForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (!uploadedImageUrl) {
+                alert('Iltimos, rasm yuklanishini kuting!');
+                return;
+            }
+
+            saveBtn.disabled = true;
+            saveBtn.textContent = 'Saqlanmoqda...';
+
+            const productData = {
+                name: document.getElementById('name').value,
+                category: document.getElementById('category').value,
+                price: document.getElementById('price').value,
+                old_price: document.getElementById('old_price').value,
+                badge: document.getElementById('badge').value,
+                image_url: uploadedImageUrl
+            };
+
+            try {
+                const res = await fetch('/api/products', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(productData)
+                });
+
+                if (res.ok) {
+                    document.getElementById('successOverlay').style.display = 'flex';
+                    setTimeout(() => {
+                        window.location.href = 'products.html';
+                    }, 2000);
+                } else {
+                    const errData = await res.json();
+                    throw new Error(errData.error || 'Serverda xatolik');
+                }
+            } catch (err) {
+                alert('Mahsulotni saqlashda xatolik: ' + err.message);
+                saveBtn.disabled = false;
+                saveBtn.textContent = 'Mahsulotni saqlash';
+            }
+        });
+
+        // Load existing products for management
+        async function loadAdminProducts() {
+            const list = document.getElementById('adminProductList');
+            try {
+                const res = await fetch('/api/products');
+                const products = await res.json();
+                
+                list.innerHTML = '';
+                products.forEach(p => {
+                    const item = document.createElement('div');
+                    item.style = 'display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #fafafa; border-radius: 12px; border: 1px solid #eee;';
+                    item.innerHTML = `
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <img src="${p.image_url}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px;">
+                            <div>
+                                <div style="font-weight: 600; color: #004532;">${p.name}</div>
+                                <div style="font-size: 0.8rem; color: #666;">${p.category} | ${p.price}</div>
+                            </div>
+                        </div>
+                        <button onclick="deleteProduct(${p.id})" style="background: #fff0f0; color: #ff4757; border: 1px solid #ffcccc; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.2s;">
+                            <i class="fas fa-trash-alt"></i> O'chirish
+                        </button>
+                    `;
+                    list.appendChild(item);
+                });
+            } catch (err) {
+                console.error('Yuklashda xato:', err);
+            }
+        }
+
+        async function deleteProduct(id) {
+            if (!confirm('Haqiqatan ham ushbu mahsulotni o\'chirmoqchimisiz?')) return;
+            
+            try {
+                const res = await fetch(`/api/products/${id}`, { method: 'DELETE' });
+                if (res.ok) {
+                    loadAdminProducts(); // Refresh list
+                } else {
+                    alert('O\'chirishda xatolik yuz berdi');
+                }
+            } catch (err) {
+                alert('Xatolik: ' + err.message);
+            }
+        }
+
+        window.onload = loadAdminProducts;
+    </script>
+</body>
+</html>

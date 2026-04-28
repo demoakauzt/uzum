@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ro'yxatdan o'tish — Menga Uzum Market</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="register.css">
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+    <!-- Back to home -->
+    <a href="index.html" class="back-link">
+        <i class="fas fa-arrow-left"></i>
+        <span>Asosiy sahifa</span>
+    </a>
+
+    <div class="register-page">
+
+        <!-- Left: Image Panel -->
+        <div class="register-image-panel">
+            <img src="register-hero.png" alt="Menga Uzum Market" class="reg-bg-img">
+            <div class="image-overlay">
+                <div class="brand-badge">
+                    <div class="logo-icon">✦</div>
+                    <span>Uzum Market</span>
+                </div>
+                <div class="image-text">
+                    <h2>Yangi imkoniyatlar<br>sizni kutmoqda</h2>
+                    <p>Ro'yxatdan o'ting va minglab mahsulotlardan bahramand bo'ling.</p>
+                </div>
+                <div class="image-stats">
+                    <div class="img-stat">
+                        <strong>20 000+</strong>
+                        <span>Mahsulotlar</span>
+                    </div>
+                    <div class="img-stat">
+                        <strong>50 000+</strong>
+                        <span>Foydalanuvchilar</span>
+                    </div>
+                    <div class="img-stat">
+                        <strong>24/7</strong>
+                        <span>Yordam</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Form Panel -->
+        <div class="register-form-panel">
+            <div class="form-header">
+                <h1>Biz bilan<br>bog'laning</h1>
+                <p>Savolingiz bormi? <span class="highlight-blue">Formani</span> to'<span class="highlight-blue">ldiring</span>, tez javob <span class="highlight-green">beramiz</span>.</p>
+            </div>
+
+            <div id="googleBtnContainer" style="margin-bottom: 20px; display: flex; justify-content: center;">
+                <!-- Google will render the official button here -->
+                <div id="g_id_signin"></div>
+            </div>
+
+            <div class="divider">
+                <span>yoki</span>
+            </div>
+
+            <form id="registerForm" class="register-form" autocomplete="off" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">ISMINGIZ</label>
+                        <input type="text" id="firstName" placeholder="First name" required>
+                        <span class="field-error">Ismingizni kiriting</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="sharifName">SHARIFINGIZ</label>
+                        <input type="text" id="sharifName" placeholder="First name" required>
+                        <span class="field-error">Sharifingizni kiriting</span>
+                    </div>
+                </div>
+
+                <div class="form-group full">
+                    <label for="familyName">FAMILIYANGIZ</label>
+                    <input type="text" id="familyName" placeholder="Last name" required>
+                    <span class="field-error">Familiyangizni kiriting</span>
+                </div>
+
+                <div class="form-group full">
+                    <label for="emailAddr">EMAIL MANZILINGIZ</label>
+                    <input type="email" id="emailAddr" placeholder="email@website.com" required>
+                    <span class="field-error">To'g'ri email kiriting</span>
+                </div>
+
+                <div class="form-group full">
+                    <label for="message">XABARINGIZ</label>
+                    <textarea id="message" placeholder="Type your message..." rows="4"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="btn-text">Yuborish</span>
+                    <span class="btn-loader" style="display:none;"><i class="fas fa-spinner fa-spin"></i></span>
+                </button>
+
+                <div class="success-msg" id="successMsg">
+                    <i class="fas fa-check-circle"></i>
+                    Muvaffaqiyatli yuborildi! Asosiy sahifaga yo'naltirilmoqda...
+                </div>
+            </form>
+
+            <p class="login-hint">Allaqachon hisobingiz bormi? <a href="#">Kirish</a></p>
+        </div>
+
+    </div>
+
+    <!-- Google OAuth success overlay -->
+    <div class="google-success-overlay" id="googleSuccessOverlay" style="display:none;">
+        <div class="google-success-box">
+            <div class="google-avatar" id="googleAvatar"></div>
+            <h3 id="googleName">Xush kelibsiz!</h3>
+            <p id="googleEmail"></p>
+            <div class="google-loading-bar"><div class="google-loading-fill"></div></div>
+            <span>Asosiy sahifaga yo'naltirilmoqda...</span>
+        </div>
+    </div>
+
+    <script src="register.js"></script>
+</body>
+</html>
