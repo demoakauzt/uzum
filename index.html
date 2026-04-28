@@ -535,5 +535,48 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        async function loadMainProducts() {
+            const grid = document.getElementById('mainProductsGrid');
+            if (!grid) return;
+            
+            let allProducts = [];
+            try {
+                const res = await fetch('/api/products');
+                if (res.ok) allProducts = await res.json();
+            } catch (err) {
+                console.log('Offline mode');
+            } finally {
+                const local = JSON.parse(localStorage.getItem('local_products') || '[]');
+                allProducts = [...local, ...allProducts].slice(0, 8); // Show first 8 products
+                
+                grid.innerHTML = '';
+                allProducts.forEach(p => {
+                    const badgeHtml = p.badge ? `<div class="badge">${p.badge}</div>` : '';
+                    const oldPriceHtml = p.old_price ? `<span class="old-price">${p.old_price}</span>` : '';
+                    
+                    const card = `
+                        <div class="feature-card">
+                            <div class="feature-image">
+                                ${badgeHtml}
+                                <img src="${p.image_url}" alt="${p.name}">
+                            </div>
+                            <div class="feature-info">
+                                <p class="feature-category">${p.category.toUpperCase()}</p>
+                                <h3>${p.name}</h3>
+                                <div class="price-row">
+                                    <span class="current-price">${p.price}</span>
+                                    ${oldPriceHtml}
+                                </div>
+                                <button class="btn btn-outline w-full add-to-cart-btn">Savatga qo'shish</button>
+                            </div>
+                        </div>
+                    `;
+                    grid.insertAdjacentHTML('beforeend', card);
+                });
+            }
+        }
+        document.addEventListener('DOMContentLoaded', loadMainProducts);
+    </script>
 </body>
 </html>
